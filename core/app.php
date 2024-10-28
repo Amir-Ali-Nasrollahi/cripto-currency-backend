@@ -11,16 +11,19 @@ final class App
 
     public function __construct()
     {
-
+        // get request
         header("Content-type:application/json");
         $input = file_get_contents('php://input');
-
-
         $url = explode("/", $_GET['url']);
 
+        
+        // check middleware conditions
         $ret_group = Route::ret_group($url[0]);
-        // var_dump($ret_group);
-        // die();
+        include_once "./middleware/" . $ret_group[0][2] . ".php";
+        $middleWare = new (ucfirst($ret_group[0][2]));
+        $middleWare->check($input);
+        
+        
         if($ret_group[1] == true) {
             $this->controller = $ret_group[0][1];
 
@@ -53,7 +56,7 @@ final class App
             $class = new (ucfirst($this->controller));
             call_user_func_array([$class, $this->method], [$this->param]);
         } else {
-            echo json_encode(["status" => 404, "value" => "test"]);
+            JSON_en(["status" => 404, "value" => "test"]);
         }   
     }
 }

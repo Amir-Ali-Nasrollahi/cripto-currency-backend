@@ -11,7 +11,7 @@ class Test_model extends Model
         $sql->execute();
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function insert () {
+    public function insert (array $values) {
 
     }
     public function update () {

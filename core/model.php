@@ -19,7 +19,7 @@ abstract class Model
 
     abstract public function select_by_id();
     abstract public function select();
-    abstract public function insert();
+    abstract public function insert(array $values);
     abstract public function update();
     abstract public function delete();
 }

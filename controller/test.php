@@ -16,7 +16,7 @@ class Test extends Controller
 
         $new = Controller::MODEL("test");
         $value = $new->select();
-        Controller::JSON_en(["status" => 200, "value" => $value[0]]);
+        JSON_en(["status" => 200, "value" => $value[0]]);
     }
     public function post(array $request)
     {
