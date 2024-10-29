@@ -15,8 +15,7 @@ class Cripto extends Controller
     }
     public function post(array $request)
     {
-        JSON_en(["status" => 400000]);
-        // echo 'test_test_4';
+        JSON_en(["status" => 200]);
     }
     public function update()
     {

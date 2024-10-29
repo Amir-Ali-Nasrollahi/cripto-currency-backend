@@ -3,8 +3,9 @@
 
 final class Test_mid {
     public function check($request) {
-        $req = JSON_de($request);
-        if ($req->token != "this is test")
+        $req = (is_string($request)) ? $request : (JSON_de($request))->token;
+        if ($req != "123")
             JSON_en(["status" => 403]);
+
     }
 }
