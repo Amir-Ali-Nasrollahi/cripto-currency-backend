@@ -4,8 +4,7 @@
 namespace Core;
 final class App
 {
-
-    private string $controller = "test";
+    private string $controller = "users";
     private string $method = "get";
     private array $param = [];
 
@@ -33,7 +32,8 @@ final class App
 
                     } else {
                         $this->method = "get_by_id";
-                        $this->param[] = $url[1]; // $array[] = $test == array_push($array, $test)
+                        // $this->param[] = 'test'; // $array[] = $test == array_push($array, $test)
+                        $this->param[] = intval($url[1]); // $array[] = $test == array_push($array, $test)
                         $middleWare->check($url[2]);
                     }
                     break;
@@ -45,7 +45,7 @@ final class App
                     break;
                 case "DELETE":
                     $this->method = 'delete';
-                    $this->param[] = $url[1]; // $array[] = $test == array_push($array, $test)
+                    $this->param[] = intval($url[1]); // $array[] = $test == array_push($array, $test)
 
                     break;
                 case 'PUT':
