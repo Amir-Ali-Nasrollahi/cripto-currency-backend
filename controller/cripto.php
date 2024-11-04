@@ -17,12 +17,16 @@ class Cripto extends Controller
     {
         JSON_en(["status" => 200]);
     }
-    public function update()
+    public function update(array $request)
     {
 
     }
-    public function delete()
+    public function delete(int $id)
     {
 
+    }
+    public function get_by_id(int $id)
+    {
+    
     }
 }
