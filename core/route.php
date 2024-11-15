@@ -15,10 +15,13 @@ class Route
     }
     public static function ret_group($main_address): array
     {
-        $file = file_exists("./route/middleware/test_mid.php");
-        if (in_array($main_address, self::$address) && $file) {
+
+        if (in_array($main_address, self::$address)) {
             $key = array_search($main_address, self::$address);
-            return [[self::$address[$key], self::$controller[$key], self::$middleWare[$key]], true];
+            $file = file_exists("./route/middleware/".self::$middleWare[$key].".php");
+            if($file) {
+                return [[self::$address[$key], self::$controller[$key], self::$middleWare[$key]], true];
+            }
         }
         return [[], false];
     }

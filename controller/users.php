@@ -18,7 +18,7 @@ class Users extends Controller
     public function get()
     {
         $value = $this->db->select();
-        JSON_en(["status" => 200, "value" => $value]);
+        JSON_en(["status" => 200, "value" =>$value]);
     }
     public function post(array $request)
     {

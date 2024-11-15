@@ -5,7 +5,7 @@ namespace Core;
 final class App
 {
     private string $controller = "users";
-    private string $method = "get";
+    private string $method = "GET";
     private array $param = [];
 
     public function __construct()
@@ -18,8 +18,7 @@ final class App
 
         // check middleware conditions
         $ret_group = Route::ret_group($url[0]);
-        
-        
+
         if ($ret_group[1] == true) {
             include_once "./route/middleware/" . $ret_group[0][2] . ".php";
             $middleWare = new (ucfirst($ret_group[0][2]));
@@ -64,7 +63,7 @@ final class App
             $class = new (ucfirst($this->controller));
             call_user_func_array([$class, $this->method], $this->param);
         } else {
-            JSON_en(["status" => 404, "value" => "test"]);
+            JSON_en(["status" => 404, "value" => "not found"]);
         }
     }
 }
