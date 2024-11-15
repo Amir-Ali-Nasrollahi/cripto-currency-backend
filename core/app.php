@@ -18,11 +18,11 @@ final class App
 
         // check middleware conditions
         $ret_group = Route::ret_group($url[0]);
-        include_once "./route/middleware/" . $ret_group[0][2] . ".php";
-        $middleWare = new (ucfirst($ret_group[0][2]));
-
-
+        
+        
         if ($ret_group[1] == true) {
+            include_once "./route/middleware/" . $ret_group[0][2] . ".php";
+            $middleWare = new (ucfirst($ret_group[0][2]));
 
             switch (strtoupper($_SERVER['REQUEST_METHOD'])) {
                 case 'GET':
