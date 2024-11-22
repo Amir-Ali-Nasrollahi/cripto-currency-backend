@@ -1,8 +1,8 @@
 <?php
 
 /*** 
- * use name space for core classes because this is so important for new mvc
- ***/
+ * use name space for core classes because this is so important for new mvc 
+ **/
 
 
 use Core\Controller;
@@ -19,11 +19,11 @@ class Cripto extends Controller
     }
     public function update(array $request)
     {
-
+        
     }
     public function delete(int $id)
     {
-
+        
     }
     public function get_by_id(int $id)
     {

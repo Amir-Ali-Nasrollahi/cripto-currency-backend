@@ -4,7 +4,7 @@
 
 /*** 
  * use name space for core classes because this is so important for new mvc
- ***/
+ **/
 
 
 use Core\Controller;
@@ -22,8 +22,7 @@ class Users extends Controller
     }
     public function post(array $request)
     {
-
-        var_dump($request);
+        var_dump($request["phone_number"]);
         die();
         // $this->db->insert([$request['name'], $request["lastname"], $request["phone_number"]]);
 

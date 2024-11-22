@@ -15,6 +15,7 @@ final class App
         $input = file_get_contents('php://input');
         $url = explode("/", $_GET['url']);
 
+        
 
         // check middleware conditions
         $ret_group = Route::ret_group($url[0]);
@@ -26,31 +27,34 @@ final class App
             switch (strtoupper($_SERVER['REQUEST_METHOD'])) {
                 case 'GET':
                     if (!isset($url[2]) || empty($url[2])) {
-                        $this->method = 'get';
                         $middleWare->check($url[1]);
+                        $this->method = 'get';
 
                     } else {
                         $this->method = "get_by_id";
                         // $this->param[] = 'test'; // $array[] = $test == array_push($array, $test)
-                        $this->param[] = intval($url[1]); // $array[] = $test == array_push($array, $test)
                         $middleWare->check($url[2]);
+                        unset($url[2]);
+                        $this->param[] = intval($url[1]); // $array[] = $test == array_push($array, $test)
                     }
                     break;
                 case 'POST':
                     $this->method = 'post';
                     $this->param[] = json_decode($input, true);
-                    $middleWare->check($input);
+                    $middleWare->check($this->param);
+                    unset($this->param[0]["token"]);
 
                     break;
                 case "DELETE":
                     $this->method = 'delete';
                     $this->param[] = intval($url[1]); // $array[] = $test == array_push($array, $test)
-
+                    
                     break;
                 case 'PUT':
                     $this->method = 'update';
                     $this->param[] = json_decode($input, true);
-                    $middleWare->check($input);
+                    $middleWare->check($this->param);
+                    unset($this->param[0]["token"]);
 
                     break;
 

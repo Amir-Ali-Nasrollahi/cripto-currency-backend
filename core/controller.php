@@ -13,5 +13,8 @@ abstract class Controller
     {
         return new (ucfirst($model_name) . "_model");
     }
+    public static function upload_file(){
+        
+    } 
 
 }
