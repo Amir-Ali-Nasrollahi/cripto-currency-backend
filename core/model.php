@@ -7,7 +7,7 @@ abstract class Model
 
     private string $dbname = 'cripto';
     private string $username = 'root';
-    private string $password = 'amir13ali85';
+    private string $password = '';
     protected object $connection;
     public function __construct() {
         try {
